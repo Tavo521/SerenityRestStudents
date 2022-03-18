@@ -1,0 +1,58 @@
+version '1.0'
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'net.serenity-bdd.aggregator'
+
+sourceCompatibility = 1.8
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+repositories {
+    mavenCentral()
+
+}
+
+buildscript {
+    repositories {
+        mavenCentral()
+
+    }
+
+    dependencies {
+        classpath "net.serenity-bdd:serenity-gradle-plugin:2.0.70"
+    }
+}
+
+ext{
+    serenityVersion = '3.2.0'
+
+}
+
+dependencies {
+
+
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.assertj:assertj-core:3.22.0'
+    testImplementation 'org.slf4j:slf4j-simple:1.7.36'
+    testImplementation 'org.hamcrest:hamcrest-core:2.2'
+    testImplementation 'io.cucumber:cucumber-java:7.2.3'
+    implementation 'net.sf.jt400:jt400:10.7'
+    implementation "net.serenity-bdd:serenity-ensure:$rootProject.ext.serenityVersion"
+    implementation "net.serenity-bdd:serenity-junit:$rootProject.ext.serenityVersion"
+    implementation "net.serenity-bdd:serenity-core:$rootProject.ext.serenityVersion"
+    implementation "net.serenity-bdd:serenity-screenplay:$rootProject.ext.serenityVersion"
+    implementation "net.serenity-bdd:serenity-screenplay-webdriver:$rootProject.ext.serenityVersion"
+    implementation "net.serenity-bdd:serenity-stats:$rootProject.ext.serenityVersion"
+    implementation "net.serenity-bdd:serenity-reports:$rootProject.ext.serenityVersion"
+    implementation "net.serenity-bdd:serenity-report-resources:$rootProject.ext.serenityVersion"
+    implementation "net.serenity-bdd:serenity-model:$rootProject.ext.serenityVersion"
+    implementation "net.serenity-bdd:serenity-screenplay-rest:$rootProject.ext.serenityVersion"
+    implementation 'net.serenity-bdd:serenity-rest-assured:3.2.0'
+
+}
+
+gradle.startParameter.continueOnFailure = true
