@@ -4,10 +4,10 @@ Feature: Rest service of students
   To verify the operation of the service
 
   Scenario Outline: Create a new student
-    Given I have a new student with the information <firstName> <lastName> <email> <programme> <course>
+    Given I have a new student with the information <firstName> <lastName> <email> <programme>
     When I create a new student with the information
     Then I verify that it student was create successfully
 
     Examples:
-      | firstName | lastName | email             | programme | course |
-      | John      | Doe      | JohnDoe@gmail.com | Systems   | Java   |
+      | firstName | lastName | email             | programme |
+      | John      | Doe      | JohnDoe@gmail.com | Systems   |
