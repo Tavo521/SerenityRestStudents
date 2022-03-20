@@ -13,12 +13,14 @@ public class RegisterStudent implements Task {
     private final String lastName;
     private final String email;
     private final String programme;
+    private final Integer studentId;
 
-    public RegisterStudent(String firstName, String lastName, String email, String programme){
+    public RegisterStudent(String firstName, String lastName, String email, String programme, Integer studentId){
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.programme = programme;
+        this.studentId = studentId;
 
     }
 
@@ -35,6 +37,9 @@ public class RegisterStudent implements Task {
         student.setEmail(email);
         student.setProgramme(programme);
         student.setCourses(courses);
+        if(!studentId.equals(null)){
+            student.setId(studentId);
+        }
         actor.remember("Student", student);
 
     }
@@ -42,6 +47,13 @@ public class RegisterStudent implements Task {
     public static RegisterStudent withTheInformation(String firstName, String lastName, String email, String programme){
 
         return Tasks.instrumented(RegisterStudent.class, firstName, lastName, email, programme);
+
+    }
+
+    public static RegisterStudent withTheInformation(String firstName, String lastName, String email, String programme,
+                                                     Integer studentId){
+
+        return Tasks.instrumented(RegisterStudent.class, firstName, lastName, email, programme, studentId);
 
     }
 

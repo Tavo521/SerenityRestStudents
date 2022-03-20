@@ -11,3 +11,13 @@ Feature: Rest service of students
     Examples:
       | firstName | lastName | email              | programme |
       | John2     | Doe2     | JohnDoe2@gmail.com | Systems   |
+
+    @tag
+  Scenario Outline: Update a student
+    Given I have a student that needs to update your information <firstName> <lastName> <email> <programme> <id>
+    When I update the student information in the list
+    Then I Verify that it student <firstName> with email <email> was update
+
+    Examples:
+      | firstName | lastName | email           | programme | id |
+      | Homero    | Simpson  | homer@gmail.com | Systems   | 1  |
