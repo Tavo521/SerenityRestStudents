@@ -23,6 +23,7 @@ public class CreateStudent extends TestBase implements Task {
                 .contentType(ContentType.JSON)
                 .when()
                 .body(student)
+                .baseUri("http://localhost:8080/student")
                 .post()
                 .then()
                 .log()

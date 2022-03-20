@@ -35,6 +35,7 @@ public class RegisterStudent implements Task {
         student.setEmail(email);
         student.setProgramme(programme);
         student.setCourses(courses);
+        actor.remember("Student", student);
 
     }
 

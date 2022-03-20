@@ -4,11 +4,14 @@ import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import models.Student;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
+import questions.VerifyTheStudent;
 import tasks.CreateStudent;
 import tasks.RegisterStudent;
+
+import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
+import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
 
 public class StudentStepDefinitions {
 
@@ -18,22 +21,22 @@ public class StudentStepDefinitions {
         OnStage.theActorCalled("Student");
     }
 
-    @Given("I have a new student with the information (.*) (.*) (.*) (.*)")
-    public void iHaveANewStudentWithTheInformation(String firstName, String lastName, String email, String programme) {
+    @Given("^I have a new student to register with the information (.*) (.*) (.*) (.*)$")
+    public void iHaveANewStudentToRegisterWithTheInformation(String firstName, String lastName, String email, String programme) {
 
-        OnStage.theActorInTheSpotlight().attemptsTo(RegisterStudent.withTheInformation(firstName, lastName, email, programme));
-
+        theActorInTheSpotlight().attemptsTo(RegisterStudent.withTheInformation(firstName, lastName, email, programme));
     }
 
-    @When("I create a new student with the information")
-    public void iCreateANewStudentWithTheInformation() {
+    @When("I create a new student in the list with the information")
+    public void iCreateANewStudentInTheListWithTheInformation() {
 
-        Student student = new Student();
-        OnStage.theActorInTheSpotlight().attemptsTo(CreateStudent.withStudentInformation(student));
+        theActorInTheSpotlight().attemptsTo(CreateStudent.withStudentInformation(OnStage.theActorInTheSpotlight().recall("Student")));
     }
 
-    @Then("I verify that it student was create successfully")
-    public void iVerifyThatItStudentWasCreateSuccessfully() {
+    @Then("^I verify that it student (.*) was create successfully$")
+    public void iVerifyThatItStudentWasCreateSuccessfully(String firstName) {
+
+        theActorInTheSpotlight().should(seeThat(VerifyTheStudent.wasCreate(firstName)));
 
     }
 
