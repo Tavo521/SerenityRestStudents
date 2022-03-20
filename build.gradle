@@ -41,6 +41,7 @@ dependencies {
     testImplementation 'org.hamcrest:hamcrest-core:2.2'
     testImplementation 'io.cucumber:cucumber-java:7.2.3'
     implementation 'net.sf.jt400:jt400:10.7'
+    implementation 'net.serenity-bdd:serenity-cucumber:3.2.0'
     implementation "net.serenity-bdd:serenity-ensure:$rootProject.ext.serenityVersion"
     implementation "net.serenity-bdd:serenity-junit:$rootProject.ext.serenityVersion"
     implementation "net.serenity-bdd:serenity-core:$rootProject.ext.serenityVersion"
