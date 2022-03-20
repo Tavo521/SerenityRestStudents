@@ -9,15 +9,22 @@ Feature: Rest service of students
     Then I verify that it student <firstName> was create successfully
 
     Examples:
-      | firstName | lastName | email              | programme |
-      | John2     | Doe2     | JohnDoe2@gmail.com | Systems   |
+      | firstName | lastName | email             | programme |
+      | John      | Doe      | JohnDoe@gmail.com | Systems   |
 
-    @tag
   Scenario Outline: Update a student
-    Given I have a student that needs to update your information <firstName> <lastName> <email> <programme> <id>
-    When I update the student information in the list
+    Given I have a student that needs to update your information <firstName> <lastName> <email> <programme>
+    When I update the student information in the list with id <id>
     Then I Verify that it student <firstName> with email <email> was update
 
     Examples:
       | firstName | lastName | email           | programme | id |
       | Homero    | Simpson  | homer@gmail.com | Systems   | 1  |
+
+  Scenario Outline: Delete a Student
+    When I delete a student in the list with id <id>
+    Then I verify that it student with id <id> was delete successfully
+
+    Examples:
+      | id |
+      | 50 |

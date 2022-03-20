@@ -10,9 +10,11 @@ import net.serenitybdd.screenplay.Tasks;
 public class UpdateStudent implements Task {
 
     private final Student student;
+    private final int studentId;
 
-    public UpdateStudent(Student student) {
+    public UpdateStudent(Student student, int studentId) {
         this.student = student;
+        this.studentId = studentId;
     }
 
     @Override
@@ -23,15 +25,15 @@ public class UpdateStudent implements Task {
                 .when()
                 .body(student)
                 .baseUri("http://localhost:8080/student")
-                .put("/" + student.getId())
+                .put("/" + studentId)
                 .then()
                 .log()
                 .all();
 
     }
 
-    public static UpdateStudent withTheInformation(Student studentInformation){
-        return Tasks.instrumented(UpdateStudent.class, studentInformation);
+    public static UpdateStudent withTheInformation(Student studentInformation, int studentId){
+        return Tasks.instrumented(UpdateStudent.class, studentInformation, studentId);
 
     }
 
