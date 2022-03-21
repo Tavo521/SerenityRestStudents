@@ -1,14 +1,13 @@
 package tasks;
 
+import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import models.Student;
-import net.serenitybdd.rest.SerenityRest;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.Tasks;
-import utils.TestBase;
 
-public class CreateStudent extends TestBase implements Task {
+public class CreateStudent implements Task {
 
     private final Student student;
 
@@ -19,7 +18,7 @@ public class CreateStudent extends TestBase implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
 
-        SerenityRest.given()
+        RestAssured.given()
                 .contentType(ContentType.JSON)
                 .when()
                 .body(student)

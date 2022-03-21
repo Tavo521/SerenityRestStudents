@@ -1,6 +1,6 @@
 package questions;
 
-import net.serenitybdd.rest.SerenityRest;
+import io.restassured.RestAssured;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;
 
@@ -19,7 +19,7 @@ public class VerifyTheStudent implements Question<Boolean> {
     public Boolean answeredBy(Actor actor) {
 
         boolean answer;
-        HashMap<String, Object> value = SerenityRest.rest().given()
+        HashMap<String, Object> value = RestAssured.given()
                 .when()
                 .baseUri("http://localhost:8080/student")
                 .get("/list")
