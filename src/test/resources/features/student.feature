@@ -15,7 +15,7 @@ Feature: Rest service of students
   Scenario Outline: Update a student
     Given I have a student that needs to update your information <firstName> <lastName> <email> <programme>
     When I update the student information in the list with id <id>
-    Then I Verify that it student <firstName> with email <email> was update
+    Then I Verify if the student <firstName> with email <email> was updated
 
     Examples:
       | firstName | lastName | email           | programme | id |

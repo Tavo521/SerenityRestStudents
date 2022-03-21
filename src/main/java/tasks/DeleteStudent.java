@@ -1,6 +1,6 @@
 package tasks;
 
-import net.serenitybdd.rest.SerenityRest;
+import io.restassured.RestAssured;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.Tasks;
@@ -16,8 +16,7 @@ public class DeleteStudent implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
 
-        SerenityRest
-                .rest()
+        RestAssured
                 .given()
                 .when()
                 .baseUri("http://localhost:8080/student")

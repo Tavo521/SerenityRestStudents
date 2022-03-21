@@ -1,5 +1,6 @@
 package questions;
 
+import io.restassured.RestAssured;
 import io.restassured.response.ValidatableResponse;
 import net.serenitybdd.rest.SerenityRest;
 import net.serenitybdd.screenplay.Actor;
@@ -16,8 +17,7 @@ public class VerifyTheStudentDelete implements Question<ValidatableResponse> {
     @Override
     public ValidatableResponse answeredBy(Actor actor) {
 
-        return SerenityRest
-                .rest()
+        return RestAssured
                 .given()
                 .when()
                 .baseUri("http://localhost:8080/student")

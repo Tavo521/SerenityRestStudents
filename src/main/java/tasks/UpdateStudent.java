@@ -1,8 +1,8 @@
 package tasks;
 
+import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import models.Student;
-import net.serenitybdd.rest.SerenityRest;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.Tasks;
@@ -20,7 +20,7 @@ public class UpdateStudent implements Task {
     @Override
     public <T extends Actor> void performAs(T actor) {
 
-        SerenityRest.rest().given()
+        RestAssured.given()
                 .contentType(ContentType.JSON)
                 .when()
                 .body(student)

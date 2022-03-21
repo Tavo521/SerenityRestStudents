@@ -59,8 +59,8 @@ public class StudentStepDefinitions {
 
     }
 
-    @Then("^I Verify that it student (.*) with email (.*) was update$")
-    public void iVerifyThatItStudentWithIdWasUpdate(String firstName, String email) {
+    @Then("^I Verify if the student (.*) with email (.*) was updated$")
+    public void iVerifyIfTheStudentWithIdWasUpdated(String firstName, String email) {
 
         theActorInTheSpotlight().should(seeThat(VerifyStudentUpdate.wasSuccessfully(firstName, email)));
 
